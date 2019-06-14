@@ -5,7 +5,7 @@
 
             <v-list>
 
-                <v-list-tile v-for="item in menuItems" :key:="item.title" router :to="item.link">
+                <v-list-tile v-for="item in menuItems" :key:="item.title"  :to="item.link">
 
                     <v-list-tile-action>
                         <v-icon>{{item.icon}}</v-icon>
@@ -24,7 +24,7 @@
         <!-- Setting up the toolbar -->
         <v-toolbar dark class="blue darken-1">
 
-            <v-toolbar-side-icon @click.native.stop="sideNav = !sideNav"
+            <v-toolbar-side-icon @click.stop="sideNav = !sideNav"
                                  class="hidden-sm-and-up"></v-toolbar-side-icon>
             <v-toolbar-title>
                 <router-link to="/" tag="span" style="cursor: pointer">Dev Meetup</router-link>
@@ -33,7 +33,7 @@
             <v-spacer></v-spacer>  <!-- Spacer is used for the space b/w the title and toolbar items -->
 
             <v-toolbar-items wrap>
-                <v-btn flat class="hidden-xs-only" v-for="item in menuItems" :key="item.title" router :to="item.link">
+                <v-btn flat class="hidden-xs-only" v-for="item in menuItems" :key="item.title"  :to="item.link">
                     <v-icon left>{{item.icon}}</v-icon>
                     {{item.title}}
                 </v-btn>

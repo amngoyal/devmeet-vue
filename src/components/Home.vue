@@ -9,12 +9,13 @@
             </v-flex>
         </v-layout>
         <v-layout>
-            <v-flex xs12>
+            <v-flex xs12 class="ma-2">
                 <v-carousel>
                     <v-carousel-item
                             v-for="item in meetups"
                             :key="item.id"
                             :src="item.imageUrl"
+                            @click="toLoadMeetup(item.id)"
                     >
                         <div class="title">{{item.title}}</div>
                     </v-carousel-item>
@@ -40,15 +41,20 @@
                 },
                     {
                         imageUrl: 'https://ramadalucknow.com/wp-content/uploads/2017/11/Exploring-Spiritual-Tourism-in-India-The-Uttar-Pradesh-Sojourn.jpg',
-                        id: 'meetupid_delhi',
+                        id: 'meetupid_up',
                         title: 'Meetup in UP'
                     },
                     {
                         imageUrl: 'http://www.track2realty.track2media.com/wp-content/uploads/2012/12/SARE-Homes-Ghaziabad.jpg',
-                        id: 'meetupid_delhi',
+                        id: 'meetupid_ghaziabad',
                         title: 'Meetup in Ghaziabad'
                     }
                 ]
+            }
+        },
+        methods:{
+            toLoadMeetup(id){
+                this.$router.push('/meetup/'+ id)
             }
         }
     }
