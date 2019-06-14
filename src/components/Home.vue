@@ -32,40 +32,25 @@
 
 <script>
     export default {
-        data() {
-            return {
-                meetups: [{
-                    imageUrl: 'https://static.toiimg.com/thumb/49450573/How-to-reach-Delhi.jpg?width=748&height=499',
-                    id: 'meetupid_delhi',
-                    title: 'Meetup in delhi'
-                },
-                    {
-                        imageUrl: 'https://ramadalucknow.com/wp-content/uploads/2017/11/Exploring-Spiritual-Tourism-in-India-The-Uttar-Pradesh-Sojourn.jpg',
-                        id: 'meetupid_up',
-                        title: 'Meetup in UP'
-                    },
-                    {
-                        imageUrl: 'http://www.track2realty.track2media.com/wp-content/uploads/2012/12/SARE-Homes-Ghaziabad.jpg',
-                        id: 'meetupid_ghaziabad',
-                        title: 'Meetup in Ghaziabad'
-                    }
-                ]
+        computed: {
+            meetups() {
+                return this.$store.getters.featuredMeetups
             }
         },
-        methods:{
-            toLoadMeetup(id){
-                this.$router.push('/meetup/'+ id)
+        methods: {
+            toLoadMeetup(id) {
+                this.$router.push('/meetup/' + id)
             }
         }
     }
 </script>
 
 <style scoped>
-    .title{
+    .title {
         position: absolute;
         bottom: 50px;
         margin: auto;
-        background-color: rgba(0,0,0,0.5);
+        background-color: rgba(0, 0, 0, 0.5);
         color: #fff;
         font-size: 2em;
         padding: 30px;
