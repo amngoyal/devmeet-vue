@@ -33,10 +33,12 @@ export const store = new Vuex.Store({
                 title: payload.title,
                 location: payload.location,
                 description: payload.description,
-                imageUrl: payload.imageUrl
+                imageUrl: payload.imageUrl,
+                date: payload.date,
+                id: "newcreatedmeetup"
             }
 
-            commit("create meetup", meetup)
+            commit("createMeetup", meetup)
         }
     },
     getters: {
