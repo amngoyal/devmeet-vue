@@ -13,10 +13,8 @@
                     </v-img>
 
                     <v-card-text>
-                        <div class="info--text">{{meetup.date}}</div>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias aperiam architecto,
-                        corporis delectus earum facere in incidunt ipsam iure molestiae non odit officia, praesentium
-                        quia quo similique voluptate. Modi.
+                        <div class="info--text">{{meetup.date}}-{{meetup.location}}</div>
+                        <div>{{meetup.description}}</div>
                     </v-card-text>
 
                     <v-card-actions>

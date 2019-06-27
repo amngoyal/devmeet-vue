@@ -60,6 +60,24 @@
                         </v-flex>
                     </v-layout>
                     <v-layout>
+                        <v-flex xs12 offset-sm3>
+                            <h1>Choose Date and Time</h1>
+                           </v-flex>
+                    </v-layout>
+                    <v-layout>
+                        <v-flex xs12 offset-sm3 class="mb-3">
+                            <v-date-picker v-model="date" color="primary lighten-1"></v-date-picker>
+                            <p>{{date}}</p>
+                        </v-flex>
+                    </v-layout>
+                    <v-layout>
+                        <v-flex xs12 offset-sm3>
+                            <v-time-picker color="primary" v-model="time" format="24hr"></v-time-picker>
+                            <p>{{time}}</p>
+
+                        </v-flex>
+                    </v-layout>
+                    <v-layout>
                         <v-flex xs12 sm6 offset-sm3>
                             <v-btn :disabled="formIsValid" class="primary" type="submit">{{formIsValid}}</v-btn>
                         </v-flex>
@@ -79,7 +97,9 @@
                 title: '',
                 location: '',
                 imageUrl: '',
-                description: ''
+                description: '',
+                date: "",
+                time: new Date()
             }
         },
         computed:{
@@ -88,6 +108,22 @@
                     this.location === '' &&
                     this.imageURL === '' &&
                     this.description === ''
+            },
+            submittableDateAndTime(){
+                const date = new Date(this.date)
+
+                if(typeof this.time === 'string'){
+                    const hours = this.time.match(/^(\d+)/)[1]
+                    const minutes = this.time.match(/:(\d+)/)[1]
+                    date.setHours(hours)
+                    date.setMinutes(minutes)
+
+                }else{
+                    date.setHours(this.time.getHours())
+                    date.setMinutes(this.time.setMinutes())
+                }
+
+                return date
             }
         },
         methods:{
@@ -100,7 +136,7 @@
                     location: this.location,
                     imageUrl: this.imageUrl,
                     description: this.description,
-                    date: new Date()
+                    date: this.submittableDateAndTime
                 }
 
                 this.$store.dispatch("createMeetup",meetupData)
